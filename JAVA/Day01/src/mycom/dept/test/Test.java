@@ -1,6 +1,6 @@
 package mycom.dept.test;
 
-public class Main {
+public class Test {
 	// Data
 	public static void main(String[] args) {
 		// Data + Code = Program
@@ -8,7 +8,6 @@ public class Main {
 		// x + 100; => error
 		int y = 0;
 		y = x+100;
-		y = x^2;
 		y = y*5;
 		
 		System.out.println(y);	
