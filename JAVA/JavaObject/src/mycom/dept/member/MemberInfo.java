@@ -52,7 +52,7 @@ public class MemberInfo {
     	}
     }
 
-    public void addMemberPoint(int point){
+    private void addMemberPoint(int point){
     	this.memberPoint += point;
     	setMemberLevel();
     }
@@ -63,5 +63,19 @@ public class MemberInfo {
     
     public static List<MemberInfo> getAllInstances() {
         return allInstances;
+    }
+    
+    public static void getBestOfMonth(){
+    	int maxPoint = 0;
+    	MemberInfo bestMember = null;
+
+    	for (MemberInfo member : MemberInfo.getAllInstances()) {
+    		if (maxPoint < member.getMemberPoint()) {
+    			maxPoint = member.getMemberPoint();
+    			bestMember = member;
+    		}
+    	}
+    	bestMember.addMemberPoint(10000);
+    	bestMember.display();
     }
 }
