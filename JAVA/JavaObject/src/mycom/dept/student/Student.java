@@ -1,24 +1,30 @@
 package mycom.dept.student;
 
 public class Student {
+	private static int countNumber = 0;
 	private int studentNumber;
 	private String studentName;
-	private int kor = 0;
-	private int eng = 0;
-	private int math = 0;
-	private int totalScore = 0;
+	private int kor;
+	private int eng;
+	private int math;
+	private int totalScore;
 	
-	public Student(String name, int number){
+	public Student(String name){
+		countNumber += 1;
+		
 		this.studentName = name;
-		this.studentNumber = number;
+		this.studentNumber = countNumber;
 	}
 	
-	public Student(String name, int number, int kor, int eng, int math){
+	public Student(String name, int kor, int eng, int math){
+		countNumber += 1;
+		
+		this.studentNumber = countNumber;
 		this.studentName = name;
-		this.studentNumber = number;
 		this.kor = kor;
 		this.eng = eng;
 		this.math = math;
+		setTotalScore();
 	}
 	
 	public void getStudentName() {
@@ -29,8 +35,12 @@ public class Student {
 		System.out.println("학번: " + this.studentNumber);
 	}
 	
-	public void getTotalScore() {
+	private void setTotalScore() {
 		this.totalScore = this.kor + this.eng + this.math;
+	}
+	
+	public void getTotalScore() {
+		setTotalScore();
 		System.out.println("총점: " + this.totalScore);
 	}
 	
@@ -45,15 +55,20 @@ public class Student {
 	}
 	
 	public void setScore(String name, int score) {
-		if (name == "국어") {
-			this.kor = score;
-			System.out.println("국어: " + this.kor);
-		} else if (name == "수학") {
-			this.math= score;
-			System.out.println("수학: " + this.math);
+		if (score > 0) {
+			if (name == "국어") {
+				this.kor = score;
+				System.out.println("국어: " + this.kor);
+			} else if (name == "수학") {
+				this.math= score;
+				System.out.println("수학: " + this.math);
+			} else {
+				this.eng = score;
+				System.out.println("영어: " + this.eng);
+			}
+			setTotalScore();
 		} else {
-			this.eng = score;
-			System.out.println("영어: " + this.eng);
+			System.out.println("잘못된 입력입니다.");
 		}
 	}
 	
