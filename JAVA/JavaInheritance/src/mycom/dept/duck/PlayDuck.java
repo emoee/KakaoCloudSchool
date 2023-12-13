@@ -1,7 +1,7 @@
 package mycom.dept.duck;
 
 public class PlayDuck {
-
+	
     public static void main(String[] args) {
 		Duck duck = new Duck();
 		duck.display();

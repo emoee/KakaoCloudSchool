@@ -1,6 +1,6 @@
 package mycom.dept.duck;
 
-public class MallardDuck extends mycom.dept.duck.Duck {
+public class MallardDuck extends Duck {
 
     public MallardDuck(){
     	this.shape = "MallardDuck";
