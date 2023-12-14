@@ -14,7 +14,7 @@ public class MallardDuck extends Duck {
     @Override
     public void display() {
     	System.out.print("MALLARD: ");
-    	super.display();
+    	System.out.println(shape + "=(" + x + "," + y + ")-" + status);
     }
     
     @Override

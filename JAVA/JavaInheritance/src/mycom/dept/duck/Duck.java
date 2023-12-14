@@ -2,7 +2,7 @@ package mycom.dept.duck;
 
 import java.util.Random;
 
-public class Duck {
+public abstract class Duck {
     protected int x;
     protected int y;
     protected String shape = "Duck";
@@ -18,13 +18,11 @@ public class Duck {
     	this.x = mx;
     	this.y = my;
     }
+    
+    public abstract void display();
 
     public void swim(){
     	this.status = "swim";
-    }
-
-    public void display(){
-    	System.out.println(shape + "=(" + x + "," + y + ")-" + status);
     }
 
     public void playSound(){

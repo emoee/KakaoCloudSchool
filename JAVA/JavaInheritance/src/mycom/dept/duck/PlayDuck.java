@@ -3,18 +3,16 @@ package mycom.dept.duck;
 public class PlayDuck {
 	
     public static void main(String[] args) {
-		Duck duck = new Duck();
-		duck.display();
-		duck.playSound();
 		
-		RedDuck redDuck = new RedDuck();
-		redDuck.display();
+    	RedDuck redDuck = new RedDuck();
 		redDuck.swim();
 		redDuck.display();
+		redDuck.playSound();
 		
 		MallardDuck mallardDuck = new MallardDuck();
 		mallardDuck.display();
 		mallardDuck.playSound();
+		
 	}
 
 }

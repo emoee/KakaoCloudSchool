@@ -19,7 +19,7 @@ public class RedDuck extends Duck {
     @Override
     public void display() {
     	System.out.print("RED: ");
-    	super.display();
+    	System.out.println(shape + "=(" + x + "," + y + ")-" + status);
     }
     
     @Override
