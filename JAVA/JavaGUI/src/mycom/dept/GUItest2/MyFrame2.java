@@ -8,8 +8,8 @@ public class MyFrame2 extends Frame{
 	public final static int FRAME_HEIGHT=600;
 	public MyShape[] shapes;
 	
-	public MyFrame2() {
-		shapes= new MyShape[10];
+	public MyFrame2(int count) {
+		shapes= new MyShape[count];
 		for (int i=0; i<shapes.length; i++) {
 			shapes[i] = new MyShape();
 		}

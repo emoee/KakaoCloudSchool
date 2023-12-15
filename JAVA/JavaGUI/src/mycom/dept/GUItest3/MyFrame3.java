@@ -8,8 +8,8 @@ public class MyFrame3 extends Frame {
 	public static final int FRAME_HEIGHT=600;
 	public MyShape3[] shapes;
 	
-	public MyFrame3() {
-		shapes = new MyShape3[10];
+	public MyFrame3(int count) {
+		shapes = new MyShape3[count];
 		
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		this.setVisible(true);	
