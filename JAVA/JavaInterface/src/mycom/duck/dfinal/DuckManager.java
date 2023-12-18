@@ -4,10 +4,15 @@ import java.awt.Graphics;
 import java.util.Random;
 
 public class DuckManager {
+	private static DuckManager manager = new DuckManager();
 	private Duck[] ducks = new Duck[20];
 	
-	public DuckManager() {
+	private DuckManager() {
 		makeDucks();
+	}
+	
+	public static DuckManager getDuckManager() {
+		return manager;
 	}
 	
 	private void makeDucks(){
@@ -47,16 +52,7 @@ public class DuckManager {
     		duck.swim(g);
     	}
     }
-
-    public void quackAllDucks(Graphics g){
-    	for (Duck duck: ducks) {
-    		if (duck instanceof IQuackable) {
-    			IQuackable duckIQuackable = (IQuackable) duck;
-    			duckIQuackable.quack(g);
-    		}
-    	}
-    }
-
+    
     public void flyAllDucks(Graphics g){
     	for (Duck duck: ducks) {
     		if (duck instanceof IFlyable) {
@@ -66,4 +62,12 @@ public class DuckManager {
     	}
     }
 
+    public void quackAllDucks(Graphics g){
+    	for (Duck duck: ducks) {
+    		if (duck instanceof IQuackable) {
+    			IQuackable duckIQuackable = (IQuackable) duck;
+    			duckIQuackable.quack(g);
+    		}
+    	}
+    }
 }

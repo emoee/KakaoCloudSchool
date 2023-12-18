@@ -25,8 +25,8 @@ public abstract class Duck {
     public abstract void display(Graphics g);
 
     public void swim(Graphics g){
-        g.setColor(Color.BLACK);
-    	g.drawString("ìˆ˜ì˜", x-15, y);
+        g.setColor(Color.GRAY);
+    	g.drawString("¼ö¿µ", x-15, y);
     }
 
 }

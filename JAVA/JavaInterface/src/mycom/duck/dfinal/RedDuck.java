@@ -9,6 +9,7 @@ public class RedDuck extends Duck implements IQuackable, IFlyable {
     }
 
     public RedDuck(int mx, int my){
+    	super(mx, my);
     }
 
     @Override

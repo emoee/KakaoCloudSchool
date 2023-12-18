@@ -17,7 +17,7 @@ public class MyFrame extends Frame{
     DuckManager duckManager;
     
     public MyFrame(){
-    	duckManager = new DuckManager();
+    	duckManager = DuckManager.getDuckManager();
     	this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
     	this.setVisible(true);
     }
