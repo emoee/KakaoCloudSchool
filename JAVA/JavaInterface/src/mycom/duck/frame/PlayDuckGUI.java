@@ -1,4 +1,4 @@
-package mycom.sfinal.frameduck;
+package mycom.duck.frame;
 
 public class PlayDuckGUI {
 

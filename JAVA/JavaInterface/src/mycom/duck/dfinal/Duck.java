@@ -1,9 +1,9 @@
-package mycom.sfinal.duck;
+package mycom.duck.dfinal;
 
 import java.awt.Graphics;
 import java.util.Random;
 
-import mycom.sfinal.frameduck.MyFrame;
+import mycom.duck.frame.MyFrame;
 
 public abstract class Duck {
     protected int x;
@@ -12,8 +12,8 @@ public abstract class Duck {
 
     public Duck(){
     	Random random = new Random();
-    	this.x = random.nextInt(MyFrame.FRAME_WIDTH-100)+70;
-    	this.y = random.nextInt(MyFrame.FRAME_HEIGHT-170)+110;
+    	this.x = random.nextInt(MyFrame.FRAME_WIDTH-100)+60;
+    	this.y = random.nextInt(MyFrame.FRAME_HEIGHT-150)+80;
     }
 
     public Duck(int mx, int my){
