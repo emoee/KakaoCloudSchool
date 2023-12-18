@@ -1,5 +1,6 @@
 package mycom.duck.dfinal;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
@@ -8,7 +9,7 @@ import mycom.duck.frame.MyFrame;
 public abstract class Duck {
     protected int x;
     protected int y;
-    public static int DUCK_SIZE;
+    public static final int DUCK_SIZE=30;
 
     public Duck(){
     	Random random = new Random();
@@ -24,7 +25,8 @@ public abstract class Duck {
     public abstract void display(Graphics g);
 
     public void swim(Graphics g){
-    	g.drawString("¼ö¿µ", x, y);
+        g.setColor(Color.BLACK);
+    	g.drawString("ìˆ˜ì˜", x-15, y);
     }
 
 }

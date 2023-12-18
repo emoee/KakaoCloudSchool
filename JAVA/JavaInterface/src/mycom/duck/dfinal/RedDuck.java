@@ -19,12 +19,14 @@ public class RedDuck extends Duck implements IQuackable, IFlyable {
 
     @Override
     public void fly(Graphics g){
-    	g.drawString("³¯´Ù", x, y);
+    	g.setColor(Color.RED);
+    	g.drawString("³¯´Ù", x-15, y+40);
     }
 
     @Override
     public void quack(Graphics g) {
-    	g.drawString("²Ð²Ð", x, y);
+    	g.setColor(Color.RED);
+    	g.drawString("²Ð²Ð", x+25, y);
     	
     }
 
