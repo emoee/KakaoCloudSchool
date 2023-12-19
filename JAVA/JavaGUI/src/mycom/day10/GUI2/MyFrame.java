@@ -16,7 +16,7 @@ public class MyFrame extends Frame {
 	Button exitButton = new Button("종료하기");
 	Panel northpanel = new Panel();
 	
-	ArrayList myshapes = new ArrayList<>();
+	ArrayList<MyShape> myshapes = new ArrayList<MyShape>();
 	
 	public MyFrame() {
 		exitButton.addActionListener(new MyHandler());
@@ -53,10 +53,8 @@ public class MyFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 		if (myshapes != null) {
-			for (Object shape: myshapes) {
-				if (shape instanceof MyShape) {
-					((MyShape) shape).display(g);
-				}
+			for (MyShape shape: myshapes) {
+				shape.display(g);
 			}
 		}
 	}

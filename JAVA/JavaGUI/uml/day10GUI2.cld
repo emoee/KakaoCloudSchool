@@ -699,7 +699,7 @@
                       </listeners>
                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$4" reference="../../net.java.amateras.uml.classdiagram.model.AttributeModel/visibility"/>
                       <name>myshapes</name>
-                      <type>ArrayList</type>
+                      <type>ArrayList&lt;MyShape&gt;</type>
                       <isStatic>false</isStatic>
                       <isFinal>false</isFinal>
                       <isEnumCst>false</isEnumCst>
