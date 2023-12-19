@@ -9,8 +9,6 @@ import mycom.dept.GUItest3.MyShape3;
 public class MyShape {
 	private int x;
 	private int y;
-	private int starx[] = {50,35,0,23,20,50,80,73,100,65,50};
-	private int stary[] = {0,30,40,65,100,85,100,65,40,30,0};
 	private int type;
 	private Color color;
 	public static final int SHAPE_SIZE = 50;
@@ -20,15 +18,8 @@ public class MyShape {
 		this.y = my-SHAPE_SIZE/2;
 		
 		Random random = new Random();
-		this.type = random.nextInt(4);
+		this.type = random.nextInt(3);
 		this.color = new Color(random.nextInt(256),random.nextInt(256),random.nextInt(256));
-	}
-	
-	private void calStar() {
-		for (int i=0; i<starx.length; i++) {
-			starx[i] += x;
-			stary[i] += y;
-		}
 	}
 	
 	public void display(Graphics g) {
@@ -45,10 +36,6 @@ public class MyShape {
 			break;
 		case 2:	
 			g.fillRect(x, y, SHAPE_SIZE, SHAPE_SIZE);
-			break;
-		case 3:
-			calStar();
-			g.fillPolygon(starx, stary, 10);
 			break;
 		default:
 			g.fillOval(x, y, SHAPE_SIZE, SHAPE_SIZE);
