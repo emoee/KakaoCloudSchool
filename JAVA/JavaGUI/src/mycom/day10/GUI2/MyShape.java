@@ -31,7 +31,7 @@ public class MyShape {
 			break;
 		case 1:
 			int[] tx = {x, x+25, x+50};
-			int[] ty = {y, y-40, y};
+			int[] ty = {y+50, y, y+50};
 			g.fillPolygon(tx, ty, 3);
 			break;
 		case 2:	

@@ -8,7 +8,7 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import mycom.day10.GUI2.MyShape;
 
@@ -16,7 +16,7 @@ public class MyFrame extends Frame {
 	Button exitButton = new Button("종료하기");
 	Panel northpanel = new Panel();
 	
-	ArrayList<MyShape> myshapes = new ArrayList<MyShape>();
+	LinkedList<MyShape> myshapes = new LinkedList<MyShape>();
 	
 	public MyFrame() {
 		exitButton.addActionListener(new MyHandler());
@@ -46,7 +46,9 @@ public class MyFrame extends Frame {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			myshapes.add(new MyShape(e.getX(), e.getY()));
-			repaint(); // repaint()->update()->paint(g)
+			repaint(); // repaint()->update(g)->paint(g)
+			// for문에서 repaint하면 안된다. for문은 속도가 굉장히 빠르기 때문에 모니터가 못따라간다.
+			// paint가 가장 먼저 불려서 화면에 아무것도 보이지않기 때문에 repaint를 호출하는 것이다.
 		}
 	}
 	
