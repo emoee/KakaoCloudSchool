@@ -23,8 +23,6 @@ public class MyFrame extends Frame{
 	 public final int HORSE_ARR_SIZE=5;
 	 private Horse[] arr =new Horse[HORSE_ARR_SIZE];
 	 
-	 private boolean start;
-	 
 	 public MyFrame() {
 		 makeHorse();
 		 makeMainUi(); //화면구성
