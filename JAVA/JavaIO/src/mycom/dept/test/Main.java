@@ -11,7 +11,7 @@ public class Main {
 			fileInputStream=new FileInputStream("Hello.txt");
 			int ch=0;
 			while((ch = fileInputStream.read()) != -1) {
-				System.out.println(ch);
+				System.out.print((char)ch);
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("파일이 없습니다.");
