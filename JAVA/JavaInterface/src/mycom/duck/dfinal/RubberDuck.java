@@ -21,7 +21,7 @@ public class RubberDuck extends Duck implements IQuackable {
     @Override
     public void quack(Graphics g) {
     	g.setColor(Color.YELLOW);
-    	g.drawString("²Ð²Ð", x+25, y);
+    	g.drawString("ì‚‘ì‚‘", x+25, y);
     	
     }
 
