@@ -15,5 +15,6 @@
     
 ## 🛠 순서
 1. 자바프로그래밍
-2. jsp
-3. springFramework
+2. 데이터베이스
+3. jsp
+4. springFramework
