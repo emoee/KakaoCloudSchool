@@ -1,5 +1,15 @@
--- °ü¸®ÀÚ °èÁ¤¿¡¼­ ÇÒ ¼ö ÀÖ±â ¶§¹®¿¡ °ü¸®ÀÚ °èÁ¤À¸·Î ·Î±×ÀÎÇØ¾ßÇÑ´Ù.
+-- ê´€ë¦¬ì ê³„ì •ì—ì„œ í•  ìˆ˜ ìˆê¸° ë•Œë¬¸ì— ê´€ë¦¬ì ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸í•´ì•¼í•œë‹¤.
 show user;
 
-DROP USER madang CASCADE; -- °èÁ¤ÀÖ´ÂÁö È®ÀÎÀ» À§ÇØ »èÁ¦ ¸í·ÉÀ» ÇÏ´Â °ÍÀÌ ÁÁ´Ù. 
-create user madang Identified by madaong default tablespace users temporary tablespace temp profile default;
+DROP USER madang CASCADE; -- ê³„ì •ìˆëŠ”ì§€ í™•ì¸ì„ ìœ„í•´ ì‚­ì œ ëª…ë ¹ì„ í•˜ëŠ” ê²ƒì´ ì¢‹ë‹¤. 
+create user madang Identified by madang default tablespace users temporary tablespace temp profile default;
+
+-- ê³„ì • ìƒì„±ë§Œí•˜ê³  ê¶Œí•œì´ ì—†ê¸°ë•Œë¬¸ì— ê¶Œí•œ ë¶€ì—¬ë¥¼ í•´ì•¼í•œë‹¤.
+-- connect ëª…ë ¹ì„ í•´ì•¼ ì™¸ë¶€ì—ì„œ ì ‘ì†í•  ìˆ˜ ìˆë‹¤. 
+GRANT CONNECT, resource to madang; 
+ -- synonym ì´ë¦„ ì¤„ì´ê¸° ê¶Œí•œ ë¶€ì—¬, import pandas as pd; ê²½ìš°ê³¼ ê°™ì´ ì´ë¦„ ì¤„ì´ê¸°ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤. 
+grant create view, create synonym to madang;
+
+alter user madang account unlock; -- ë°©í™”ë²½ í•´ì œ ëª…ë ¹, í•´ì œí•˜ì§€ì•Šìœ¼ë©´ ê³„ì • ì ‘ì†ì„ í•˜ì§€ ëª»í•œë‹¤.
+
+-- ì—¬ê¸°ê¹Œì§€ê°€ madang ê³„ì • ìƒì„±í•´ ê¶Œí•œ ë¶€ì—¬í•˜ëŠ” ê²ƒì´ë‹¤. 
