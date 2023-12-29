@@ -31,4 +31,21 @@ WHERE SALEPRICE > (SELECT AVG(SALEPRICE)
                                             FROM ORDERS SOD
                                             WHERE OD.CUSTID = SOD.CUSTID);
 ---
+SELECT SUM(SALEPRICE) "TOTAL"
+FROM ORDERS
+WHERE CUSTID IN (SELECT CUSTID
+                                FROM CUSTOMER
+                                WHERE ADDRESS LIKE '%¥Î«—πŒ±π%');
+---
+SELECT ORDERID, SALEPRICE
+FROM ORDERS
+WHERE SALEPRICE > ALL (SELECT SALEPRICE FROM ORDERS WHERE CUSTID = 3);
+
+---
+SELECT SUM(SALEPRICE) "TOTAL"
+FROM ORDERS OD
+WHERE EXISTS (SELECT *
+                            FROM CUSTOMER CS
+                            WHERE ADDRESS LIKE '%¥Î«—πŒ±π%' AND CS.CUSTID = OD.CUSTID);
+
 
