@@ -3,83 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>HTML 5 문서 구조 잡기</title>
-    <style type="text/css">
-        /* 
-        * css 정의가 여러개인 경우 순서가 굉장히 중요하다.
-        * import의 순서에 따라 스타일이 적용된다.
-        * 맨 마지막에 적힌 것이 적용된다.
-        */
-        body {
-            font-size: 1em;
-            color: #333;
-            font-family: "맑은 고딕";
-        }
-        header, article, footer, #sidemenu {
-            border: 1px solid #92a5b2;
-            margin: 5px;
-            padding: 10px;
-        }
-        header {
-            height: 100px;
-            background-color: ghostwhite;
-        }
-        nav ul {
-            float: right;
-            list-style: none;
-        }
-        nav ul li {
-            float: left;
-            margin:  0 20px;
-        }
-        article {
-            float: right;
-            width: 70%;
-            font-size: 0.75em;
-            line-height: 1.5em;
-        }
-        hgroup {
-            border-bottom: 3px solid rgb(249, 231, 184);
-        }
-        #sidemenu {
-            float: left;
-            width: 25%;
-            height: 200px;
-
-        }
-        #sidemenu ul {
-            list-style: none;
-        }
-        #sidemenu aside {
-            clear: both;
-            background-color: rgb(249, 255, 193);
-            width: 100%;
-            height: 40%;
-            border: 1px solid #92a5b2;
-        }
-        figure {
-            float: right;
-            margin: 5px;
-        }
-        figure img { 
-            border: 1px solid #666;
-            box-shadow: #ccc 5px 5px 5px;
-        }
-        figcaption {
-            text-align: center;
-        }
-        footer {
-            clear: both;
-            background-color: rgb(226, 245, 226);
-            height: 70px;
-        }
-        section {
-            width: 95%;
-            height: 100px;
-            padding: 10px;
-            background-color: rgb(245, 220, 234);
-            clear: both;
-        }
-    </style>
+    <link href="css/ex2.css" rel="stylesheet">
 </head>
 
 <body>
@@ -100,7 +24,7 @@
             <li>Menu 2</li>
             <li>Menu 3</li>
         </ul>
-        <aside>
+        <aside style="color:red;"> <!-- inline 방식으로 스타일 적용 -->
             보조적인 asdie 내용
         </aside>
     </div>
