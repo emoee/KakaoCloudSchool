@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML 5 문서 구조 잡기 2</title>
+        <style type="text/css">
+            body{
+                text-align: center;
+                font-family: "IBM Plex Sans KR";
+                font-size: 1.5em;
+                color: rgb(80, 80, 80);
+            }
+            .position1{
+                /* 
+                * position, top, left가 한쌍 
+                * fixed: 화면을 기준으로 고정 위치에 자리한다.(다른 요소와 무관하게)
+                */
+                position: fixed;
+                top: 200px;
+                left: 230px;
+
+                height: 130px;
+                width: 150px;
+                background-color: lightsalmon;
+            }
+            .position2{
+                /* 
+                * relative: 원래있던 위치 기준으로 (상대적인 위치)top, left 만큼 움직인다.
+                */
+                position: relative;
+                top: 200px;
+                left: 50px;
+
+                height: 130px;
+                width: 150px;
+                background-color: lightgoldenrodyellow;
+            }
+            .position3{
+                /* 
+                * absolute: 자신의 상위 요소(body)를 기준으로 위치를 잡는다. 
+                */
+                position: absolute;
+                top: 50px;
+                left: 50px;
+                
+                height: 130px;
+                width: 150px;
+                background-color: lightsteelblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="position1">1번 요소<br>fixed<br>화면 고정</div>
+        <div class="position2">2번 요소<br>relative<br>상대 위치</div>
+        <div class="position3">3번 요소<br>absolute<br>부모 위치</div>
+    </body>
+</html>
