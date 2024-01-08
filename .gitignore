@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,java,eclipse,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,eclipse,visualstudiocode
 
+# html 이미지
+images/
+
 ### Eclipse ###
 .metadata
 bin/
