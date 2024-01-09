@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+    <script>
+        // 선언적 함수
+        function display(){
+            document.write("<h1>방문글 작성</h1>")
+        }
+
+        display(); // 호출 
+        
+        function btnClick(){
+            // 이름이 홍길동이면 방문글을 등록한다는 메세지를 출력하고,
+            // 이름이 홍길동이 아니면 textarea에 문자열을 전부 삭제한다.
+            var nameObj = window.document.getElementById("tname");
+            var textObj = window.document.getElementById("content");
+            if (nameObj.value === "홍길동"){
+                window.alert("방문자 등록")
+            } else {
+                textObj.innerText="";
+            }
+        }
+
+        function display2(x){
+            for (var i =0; i<arguments.length; i++){
+                console.log("arguments: ", arguments[i]);
+            } // 가변 길이 처리
+            return 10;
+        }
+
+        var result = display2(10,20,30); // 매개변수 갯수 상관없다. 
+        // 오버로딩 지원안한다. 메소드명이 같으면 모두 실행된다.
+    </script>
+    <style type="text/css">
+        body {
+            font-family: "IBM Plex Sans KR";
+        }
+    </style>
+</head>
+<body>
+    <form>
+        이름: <input type="text" id="tname" value="홍길동"><br><br>
+        내용 <br>
+        <textarea id="content" rows="5" cols="40">작성</textarea><br><br>
+        <input type="button" value="등록" onclick="btnClick();">
+    </form>
+</body>
+</html>
