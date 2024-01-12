@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="ajaxButton" type="button">Make a request</button>
+    <script>
+        var httpRequest;
+        (function() {
+         
+          document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+        
+          function makeRequest() { // 여기부터 AJAX 코드가 시작.
+            
+            if (window.XMLHttpRequest) { // 모질라, 사파리, IE7+ ...
+                httpRequest = new XMLHttpRequest(); // 객체 생성.
+                console.log(httpRequest);
+            } else if (window.ActiveXObject) { // IE 6 이하
+                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        
+            if(!httpRequest) {
+              alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+              return false;
+            }
+            httpRequest.onreadystatechange = alertContents;
+            httpRequest.open('GET', 'test.xml',true); //비동기방식(true), 동기방식(false)
+            httpRequest.send();
+          }
+        
+          function alertContents() {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) { //4
+              if (httpRequest.status === 200) { // http의 응답 상태코드
+                alert(httpRequest.responseText);
+              } else {
+                alert('request에 뭔가 문제가 있어요.');
+              }
+            }
+          }
+        })();
+        </script>
+</body>
+</html>
