@@ -7,10 +7,14 @@
 <body>
     <button id="ajaxButton" type="button">Make a request</button>
     <script>
-        var httpRequest;
+        var httpRequest; 
+        /* 아래 함수 구조
+        (function(){})();
+        (함수리터럴)();
+        */ 
         (function() {
          
-          document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+          document.getElementById("ajaxButton").addEventListener('click', makeRequest); // 클릭이벤트 발생 시 함수 호출
         
           function makeRequest() { // 여기부터 AJAX 코드가 시작.
             
@@ -25,7 +29,10 @@
               alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
               return false;
             }
-            httpRequest.onreadystatechange = alertContents;
+            httpRequest.onreadystatechange = alertContents; 
+            // 통신에서 상태변경 발생하는 시그널이 발생하면 함수 호출, 그래서 함수()이렇게 대입하지않고 
+            //onreadystatechange 콜백함수에 함수 값을 전달하면 해당 콜백함수가 불려질 때마다 실행된다.
+            // 따라서 open하기전에 값을 전달해놔야한다.
             httpRequest.open('GET', 'test.xml',true); //비동기방식(true), 동기방식(false)
             httpRequest.send();
           }
