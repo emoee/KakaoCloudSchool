@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+    <!-- 모듈화가 중요하다. 그래야 유지보수비용이 줄어듬.
+         모듈화 방식은 함수, 객체 등등으로 나뉨.
+         자바에서 객체(클래스)중심으로 모듈화한 것과 같음.
+         페이지를 모듈화해야한다. -->
+    <div data-role="page"> <!--추가적으로 속성을 만들어서 사용할때 하이픈을 사용해 정의한다.-->
+        <div data-role="header">
+            <h1>사원정보 확인</h1>
+        </div>
+        <div data-role="cotent">
+            <ul id="list" data-role="listview" data-inset="true" data-filter="true" >
+                <li><img src=".\images\img_jQuery_Mobile\FF.png"><h2>Firefox</h2><p>웹</p></li>
+                <li><img src=".\images\img_jQuery_Mobile\google.png"><h2>Chrome</h2><p>웹</p></li>
+                <li><img src=".\images\img_jQuery_Mobile\ie.png"><h2>IE</h2><p>웹</p></li>
+                <li><img src=".\images\img_jQuery_Mobile\Opera.png"><h2>Opera</h2><p>웹</p></li>
+                <li><img src=".\images\img_jQuery_Mobile\Safari.png"><h2>Safari</h2><p>웹</p></li>
+            </ul>
+        </div>
+        <div data-role="footer">
+
+        </div>
+    </div>
+</body>
+</html>
