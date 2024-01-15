@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Mobile</title>
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+    <script type="text/javascript">
+        var xml;
+        // jQuery = $ = $('document').ready 거의 대부분 항상 작성해야하기때문에 $달러표시로 축약하여 사용한다.
+        $(function(){
+            $.ajax({
+                type: "GET",
+                url: "test.xml",
+                dataType: "xml",
+                success: xmlParser
+            })
+        });
+
+        function xmlParser(data){ // 응답 상태가 200번일 때 (= 성공했을 때)
+            xml = data;
+            $(xml).find("Employee").each(function(){
+                var name = $(this).attr("name");
+                var email = $(this).find("email").text();
+                var jobtitle = $(this).find("jobtitle").text();
+                var address = $(this).find("address").text();
+                var workphone = $(this).find("workphone").text();
+                var homephone = $(this).find("homephone").text();
+                var cellphone = $(this).find("cellphone").text();
+                var fax = $(this).find("fax").text();
+                
+                $("#results").append('<li><h3 id="name">'+name + '</h3><ul>'+
+                                    '<li>Email: '+email + '</li>' +
+                                    '<li>JobTitle: '+jobtitle + '</li>' +
+                                    '<li>Address: '+address + '</li>' +
+                                    '<li>Workphone: '+workphone + '</li>' +
+                                    '<li>Cellphone: '+cellphone + '</li>' +
+                                    '<li>Homephone: '+homephone + '</li>' +
+                                    '<li>Fax: '+fax + '</li></ul></li>');
+            });
+            $('#results').listview('refresh');
+        }
+    </script>
 </head>
 <body>
     <!-- 모듈화가 중요하다. 그래야 유지보수비용이 줄어듬.
@@ -13,20 +49,22 @@
          자바에서 객체(클래스)중심으로 모듈화한 것과 같음.
          페이지를 모듈화해야한다. -->
     <div data-role="page"> <!--추가적으로 속성을 만들어서 사용할때 하이픈을 사용해 정의한다.-->
-        <div data-role="header">
+        <div data-role="header" data-theme="a">
             <h1>사원정보 확인</h1>
         </div>
         <div data-role="cotent">
-            <ul id="list" data-role="listview" data-inset="true" data-filter="true" >
-                <li><img src=".\images\img_jQuery_Mobile\FF.png"><h2>Firefox</h2><p>웹</p></li>
-                <li><img src=".\images\img_jQuery_Mobile\google.png"><h2>Chrome</h2><p>웹</p></li>
-                <li><img src=".\images\img_jQuery_Mobile\ie.png"><h2>IE</h2><p>웹</p></li>
-                <li><img src=".\images\img_jQuery_Mobile\Opera.png"><h2>Opera</h2><p>웹</p></li>
-                <li><img src=".\images\img_jQuery_Mobile\Safari.png"><h2>Safari</h2><p>웹</p></li>
-            </ul>
+            <div class="content-primary">
+                <ul id="list" data-role="listview" data-theme="a" data-filter="true"="">
+                    <li id="load">Loading Data..</li>
+                </ul>
+                <ul id="results" data-role="listview" data-theme="a">
+                </ul>
+            </div>
         </div>
-        <div data-role="footer">
-
+        <div data-role="footer" data-theme="a">
+            <div data-role="navbar">
+                <p align="center">::Footer::</p>
+            </div>
         </div>
     </div>
 </body>

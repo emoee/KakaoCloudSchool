@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- 계층화된 하나의 트리구조로 작성해야한다. -->
+
 <THEEmployees xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Employee name="John Doe">
     <email>jdoe@email.com</email>
@@ -12,7 +14,7 @@
   </Employee>
   <Employee name="Sam Jones">
     <email>sjones@email.com</email>
-    <jobtitle>Sotware Developer</jobtitle>
+    <jobtitle>Software Developer</jobtitle>
     <address>San Francisco, CA</address>
     <workphone>888-888-8888</workphone>
     <homephone>999-999-9999</homephone>
