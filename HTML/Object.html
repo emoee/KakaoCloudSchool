@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <script>
+        // ES3
+        function display(){ // outer function
+            var out = "Out Function";
+            return (function(){ // innerfunction
+                var inner = "Inner Function";
+                document.write("<h1>"+out+"</h1>");
+                document.write("<h1>"+inner+"</h1>");
+                /* 
+                * inner인 경우 실행되는 것이 당연하다
+                * 하지만 out인 경우 return 후 out 변수가 수거되어 실행되지않아야하는데 
+                * 자바스크립트에서는 가능하다. ?왜지..?
+                */
+            })
+        }
+
+        
+        var result = display();
+        result();
+    
+        display()(); // 위와 똑같음: 해당 결과를 바로 실행
+
+        let func = function(ar1=10, ar2=20, ...ar3){ // ...(점 세개) 가변길이 변수로 사용할 수 있다. = 배열
+            console.log(ar1 + ", " + ar2);
+            console.log(ar3)
+            return ar1+ar2
+        }
+        func();
+        func(54,546,4,8752,74);
+        func(ar2=110, ar1=52);
+
+        console.log("--")
+        let mysum = (ar1=10, ar2=20, ...ar3) => ar1+ar2;
+        console.log(mysum(20, 410));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
