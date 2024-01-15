@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>영화진흥원 API</title>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="/HTML/OpenAPI/key/kofic_key.js"></script>
     <script type="text/javascript">
+        const key = config.apikey;
         var kobis_url = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20240114';
         console.log("--");
         $.ajax({

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <title>위키백과 QA API</title>
+    <script src="/HTML/OpenAPI/key/etri_key.js"></script>
+    <script type ="text/javascript">
+        var openApiURL = 'http://aiopen.etri.re.kr:8000/WikiQA';
+        const access_key = config.apikey;
+        var question = '위키백과는 무엇인가요?';
+        var type = 'hybridqa';
+        var requestJson = {
+            'argument': {
+                'question': question,
+                'type': type
+            }
+        };
+        $.ajax({
+            type: 'POST',
+            url: openApiURL,
+            data: JSON.stringify(requestJson),
+            contentType: 'application/json',
+            headers: {
+                'Authorization': access_key
+            },
+            success: result
+        });
+
+        function result(data){
+            console.log(JSON.stringify(data))
+            var list = data.return_object.WiKiInfo.AnswerInfo[0].answer;
+            console.log(list);
+            $('#answer').append(list);
+        };
+    </script>
+</head>
+<body>
+    <h1>위키백과 QA API</h1>
+    <h2>위키백과는?</h2>
+    <h3 id="answer"></h3>
+</body>
+</html>
