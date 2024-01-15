@@ -4,6 +4,9 @@
 # html 이미지
 images/
 
+# key
+*key.*
+
 ### Eclipse ###
 .metadata
 bin/

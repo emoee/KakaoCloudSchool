@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>영화진흥원 API</title>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript">
+        var kobis_url = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20240114';
+        console.log("--");
+        $.ajax({
+            type: "GET",
+            url: kobis_url,
+            dataType: "json",
+            success: jsonParser
+        });
+
+        function jsonParser(data){
+            // json 문자열을 --> 자바스크립트 object로 변환
+            console.log(typeof(data))
+            console.log(data.boxOfficeResult);
+            var list = data.boxOfficeResult.dailyBoxOfficeList;
+            $(list).each(function(i, value){
+                console.log(i);
+                $('#listV').append("<li>" + value.movieNm + "</li>");
+            });
+
+            //$('#listV').listview('refresh');
+        }
+    </script>
+</head>
+<body>
+    <h1>영화 정보</h1>
+    <ul id="listV">
+
+    </ul>
+</body>
+</html>
