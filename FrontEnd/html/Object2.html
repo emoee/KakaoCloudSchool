@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <script>
+        // 방법 1. 객체선언 = 객체 리터럴
+        var pobj ={
+            x: 100,
+            y: 200,
+            myShape: 'Player',
+            display: function(){
+                document.write("<h1>"+this.x+", "+this.y+"="+this.myShape+"</h1>")
+            }
+        };
+        pobj.display();
+        var pobj2 ={
+            x: 300,
+            y: 400,
+            myShape: 'Player2',
+            display: function(){
+                document.write("<h1>"+this.x+", "+this.y+"="+this.myShape+"</h1>")
+            }
+        };
+        pobj2.display();
+        // 추가로 객체 선언하려면 복사를 해야한다. 하나의 틀로 여러개 생성 불가하다.
+        
+        // 실행 도중 객체의 구성요소를 동적으로 추가, 삭제 변경 가능하다.
+        pobj2.changeColor= function(){
+            document.write("<h1 style='color:blue'>"+this.myShape+"</h1>");
+        };
+        pobj2.changeColor();
+        pobj2.myShape= 'Player~';
+        pobj2.changeColor();
+
+        // 방법 2. 생성자함수 패턴의 객체 생성 (ES5): 이전 방법은 메모리 너무 비효율적이라 약간 개선된 방법
+        // java: ClassType object = new ClassType();
+        function Person(){ // window 메소드, 생성자함수를 만든다고 생각.
+            // 인스턴스의 구성요소를 초기화
+            this.x= 100; // 함수의 생성자함수 패턴인 경우 this를 꼭 써서 선언해야한다.(= 인스턴스변수를 생성하기위해서는 this 필요)
+            this.y= 200;
+            this.myShape= 'Player';
+            this.display = function(){
+                let color = 'green'; // 지역변수
+                document.write('x=' + this.x);
+                document.write(', y=' + this.y);
+                document.write(', myShape' + this.myShape);
+                document.write(', color=' + color); // 지역변수니까 this 제외
+                document.write('<hr>');
+            };
+        };
+
+        let pObj = new Person(); // ES5의 객체 생성 방식: 복붙 안해도 됨~
+        pObj.display();
+
+        function Person2(arg){
+            this.name= arg;
+            this.getName= function(){
+                return this.name;
+            };
+            this.setName= function(value){
+                this.name = value;
+            };
+        };
+        let me= new Person2("John");
+        let you= new Person2("Alice");
+
+        console.log(me.getName());
+        console.log(you.getName());
+
+        me.setName("kate");
+        console.log(me.getName());
+        
+        /*
+        me.display= function(){
+            window.alert(this.getName());
+        }
+        me.display();
+        you.display(); // me에만 추가하여서 오류발생. 즉 메모리 공유하지않음.
+        // 코드를 중복해서 작성하지 않았지만 결국 실제적인 메모리가 줄지않았다. 복붙한거랑 같은 메모리 크기 사용
+        */
+
+        Person2.prototype.display= function(){ // 함수패턴으로 선언한 객체만 prototype 사용 가능
+            // 이렇게 작성하면 해당 Person2의 객체들이 공유 가능하다.
+            console.log('display..'+ this.name);
+        };
+
+        me.display();
+        you.display();
+
+        // 따라서 객체 생성자 함수 작성할때 prototype으로 작성!하기
+        Person2.prototype.getName2= function(){
+            return this.name+"2";
+        }; 
+        let p1 = new Person2('Apple');
+        console.log(p1.getName2());
+
+        //
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
