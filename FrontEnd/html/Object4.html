@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // Person 객체를 상속해 Student 객체를 만들기
+        // ES3 방식(객체 리터럴)으로 객체 생성
+        var person= {
+            name: "person",
+            getName: function(){
+                return this.name;
+            },
+            setName: function(value){
+                this.name= value;
+            }
+        };
+        // 해당 객체를 상속 구조를 사용해 코드 공유하려한다.
+        function create_object(parent){
+            function F(){};
+            F.prototype= parent;
+            return new F();
+        }
+        // prototype 기반의 상속 활용(student가 자식)
+        var student= create_object(person); // person의 코드 공유해 사용
+        console.log(student.getName());
+
+        // student에 추가기능 작성, 확장
+        var addProp= {
+            // student에서 추가하고자 하는 속성이나 메소드
+            setAge: function(age){
+                this.age=age;
+            },
+            getAge: function(){
+                return this.age;
+            }
+        };
+        function extend(child, xprop){
+            if(!xprop){
+                xprop= child;
+                child= this;
+            }
+            for(var i in xprop){
+                child[i]= xprop[i];
+                console.log(xprop[i]);
+            }
+            return child;
+        }
+        extend(student, addProp);
+        student.setAge(25);
+        console.log(student.getAge());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
