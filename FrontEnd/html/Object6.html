@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // ES6 클래스를 이용한 객체
+        class Player{ // Player.prototype 사용 가능
+            constructor(name){
+                this.name= name;
+            }
+            display(){
+                console.log("display")
+            }
+            age= 100;
+        }
+
+        //let player= new Player("player");
+        //player.display();
+
+        document.write(typeof Player); // function
+        document.write("<hr>");
+        document.write(Player === Player.prototype.constructor);
+        console.log(Player.prototype);
+        Player.prototype.display();
+
+        let User= class{
+            say(){
+                console.log("say");
+            }
+        }
+        new User().say();
+
+        function makeClass(phrase){ 
+            // 이게 가능한 이유는 클래스도 리터럴로 보기때문이다.
+            return class{
+                say(){
+                    console.log("make");
+                }
+            }
+        }
+        let user2= makeClass("안녕하세요");
+        new user2().say();
+
+        class Animal{
+            constructor(name){
+                this.speed= 0;
+                this.name= name;
+            }
+            run(speed){
+                this.speed= speed;
+                alert(`${this.name}은/는 속도 ${this.speed}로 달립니다.`);
+            }
+            stop(){
+                this.spped= 0;
+                alert(`${this.name}이/가 멈췄습니다.`);
+            }
+        }
+        class Rabbit extends Animal{ 
+            hide(){
+                alert(`${this.name}이/가 숨었습니다.`);
+            }
+        }
+        // extends는 prototype 기반으로 동작: Rabbit.prototype.[[Prototype]]을 Animal.prototype으로 설정
+        // [[Prototype]]: 포인팅 한다는 의미, 브라우저마다 __proto__를 지원하지않기도 해서 꺽쇠로 표현함.
+        let bear= new Animal("곰");
+        let whiteRabbit= new Rabbit("흰 토끼");
+        bear.run(10);
+        // bear.hide(); error
+        whiteRabbit.hide();
+        whiteRabbit.run(5);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
