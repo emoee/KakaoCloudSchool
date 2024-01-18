@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function Person(arg){
+            this.name= arg; // own properties 본인(Person) 소유
+        }
+        Person.prototype.setName= function(value){ // 이건 prototype 소유
+            this.name= value;
+        }
+        Person.prototype.getName= function(value){
+            return this.name;
+        }
+
+
+        // student: child 
+        function Student(arg){
+
+        }
+        var you= new Person("어른");
+        console.log(you.getName());
+
+        //var s1= new Student("학생1");
+        //console.log(s1.getName()); // error
+
+        // 상속
+        Student.prototype= you;
+        var s1= new Student("학생1");
+        console.log(s1.getName()); // 학생1로 초기화가 되지않음.. this가 없기 때문
+        s1.setName("jun"); // 설정해주면 this가 생김
+        console.log(s1.getName());
+
+
+        
+        function Student2(arg){
+            Person.apply(this, arguments) // Person을 함수로 호출: super(arg);
+        }
+        Student2.prototype= you;
+        var s2= new Student2("학생2");
+        console.log(s2.getName());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
