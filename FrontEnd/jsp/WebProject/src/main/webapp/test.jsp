@@ -1,16 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     
-<!-- ÀÚ¹Ù ÄÚµå°¡ ¾îµð¿¡ ÀÖ´ø °¡Àå ¸ÕÀú ½ÇÇàµÈ´Ù. -->
+<!-- ìžë°” ì½”ë“œê°€ ì–´ë””ì— ìžˆë˜ ê°€ìž¥ ë¨¼ì € ì‹¤í–‰ëœë‹¤. -->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+</script>
 </head>
 <body>
-	<% // Java Code
-		String str="Hello";
+	<% 
+	// Java Code
+	// JSP= java server page= java + http ì œì–´
+	String sname= "ì§±êµ¬";
+	
 	%>
+	<h1><span style= "color: green"><%
+		out.write(sname);
+	%></span>ë‹˜! ì•ˆë…•í•˜ì„¸ìš”.</h1>
 </body>
 </html>
