@@ -20,14 +20,31 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet...!");
 		// request 파악
+		String imgNum= request.getParameter("imgNum");
+		
 		// DB 로직 처리
 		// response 제어
 		response.setContentType("text/html; charset= utf-8");
 		
 		PrintWriter out= response.getWriter();
-		out.write("<h1>Welcome to Servlet</h1>");
 		String imgPath= "eclipse.png";
-		out.write("<img src=\"image/"+imgPath+"\">");
+		
+		switch(Integer.parseInt(imgNum)) {
+			case 1:
+				imgPath= "HTML.png";
+				break;
+			case 2:
+				imgPath= "CSS.png";
+				break;
+			case 3:
+				imgPath= "JS.png";
+				break;
+			default:
+				imgPath= "eclipse.png";
+		}
+		
+		out.write("<h1>Welcome to Servlet</h1>");
+		out.write("<img  width=\"150\" src=\"image/"+imgPath+"\">");
 		
 		out.close();
 	}
