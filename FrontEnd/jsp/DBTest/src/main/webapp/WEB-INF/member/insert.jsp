@@ -7,11 +7,11 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean scope="request" id="member" class="mycom.test.domain.MemberInfo">
-	<jsp:setProperty name="member" property="*" />
+<jsp:useBean scope="request" id="mem" class="mycom.test.domain.MemberInfo">
+	<jsp:setProperty name="mem" property="*" />
 </jsp:useBean>
 
-<%=member %>
+<%=mem %>
 
 <%
 	// DB 연동
@@ -30,10 +30,10 @@
 		
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, member.getMid());
-		pstmt.setString(2, member.getMpw());
-		pstmt.setString(3, member.getMname());
-		pstmt.setString(4, member.getMemail());
+		pstmt.setString(1, mem.getMemberid());
+		pstmt.setString(2, mem.getPassword());
+		pstmt.setString(3, mem.getName());
+		pstmt.setString(4, mem.getEmail());
 		
 		result = pstmt.executeUpdate();
 		

@@ -1,51 +1,51 @@
 package mycom.test.domain;
 
 public class MemberInfo {
-	private String mid;
-	private String mpw;
-	private String mname;
-	private String memail;
+	private String memberid;
+	private String password;
+	private String name;
+	private String email;
 	
 	public MemberInfo() {
 		
 	}
-	
+
 	@Override
 	public String toString() {
-		return "MemberInfo [mid=" + mid + ", mpw=" + mpw + ", mname=" + mname + ", memail=" + memail + "]";
+		return "MemberInfo [memberid=" + memberid + ", password=" + password + ", name=" + name + ", email=" + email
+				+ "]";
 	}
 
-	public String getMid() {
-		return mid;
+	public String getMemberid() {
+		return memberid;
 	}
 
-	public void setMid(String mid) {
-		this.mid = mid;
+	public void setMemberid(String memberid) {
+		this.memberid = memberid;
 	}
 
-	public String getMpw() {
-		return mpw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setMpw(String mpw) {
-		// 비밀번호와 같은 경우 보낼 때 검사가 추천이지만 보안을 위해 자바에서 한번 더 검사하는 것도 추천.
-		this.mpw = mpw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getMname() {
-		return mname;
+	public String getName() {
+		return name;
 	}
 
-	public void setMname(String mname) {
-		this.mname = mname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getMemail() {
-		return memail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setMemail(String memail) {
-		this.memail = memail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
