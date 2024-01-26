@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>ConnectionPool</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <servlet> <!-- name, class 순으로 작성하는 것이 관례이다. -->
+  	<servlet-name>DBCPinit2</servlet-name>
+  	<servlet-class>mycom.test.init.DBCPinit2</servlet-class>
+  	<init-param>
+  		<param-name>jdbcDriver</param-name>
+  		<param-value>org.mariadb.jdbc.Driver</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>jdbcUrl</param-name>
+  		<param-value>jdbc:mariadb://localhost:3306/chap14?characterEncoding=utf8</param-value>
+  	</init-param>
+  	<init-param>
+		<param-name>dbUser</param-name>
+		<param-value>jspexam</param-value>
+	</init-param>
+  	<init-param>
+		<param-name>dbPass</param-name>
+		<param-value>jsppw</param-value>
+	</init-param>
+  	<init-param>
+		<param-name>poolName</param-name>
+		<param-value>chap14</param-value>
+	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  	
+  </servlet>
+</web-app>
