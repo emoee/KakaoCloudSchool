@@ -17,7 +17,7 @@ import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 public class DBCPInitListener implements ServletContextListener {
-
+// jsp, listener, servlet, filter 톰캣이 라이프사이클 관리
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		String poolConfig= sce.getServletContext().getInitParameter("poolConfig"); 
