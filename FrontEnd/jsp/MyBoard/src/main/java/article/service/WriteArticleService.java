@@ -19,11 +19,11 @@ public class WriteArticleService {
 	   
 	// Writing에서 묶여서 가야하기 떄문에 Article Dao 가 아닌 IArticleDao가 되는거다( transaction)
 
-	IArticleDao adao= new ArticleDao();
-	ArticleContentDao acdao= new ArticleContentDao();
+	private IArticleDao adao= new ArticleDao();
+	private ArticleContentDao contentDao= new ArticleContentDao();
 	
 	//@Transaction 처리를 나중에 spring에서 해준다
-	public void write(WriteRequest req) {
+	public Integer write(WriteRequest req) {
 		Connection conn= null;
 		try {
 			// transcation 처리
@@ -37,16 +37,25 @@ public class WriteArticleService {
 				throw new RuntimeException("fail to insert article");  //명령 자체의 실행 오류
 			}
 	
-			ArticleContent content= null;
-			acdao.insert(conn, content);
+			ArticleContent content= new ArticleContent(
+					savedArticle.getNumber(),
+					req.getContent());
+			ArticleContent savedContent= contentDao.insert(conn, content);
+			if (savedContent == null) {
+				throw new RuntimeException("fail to insert article_content");
+			}
+			
 			conn.commit(); // 처리할 명령 다 끝나면 커밋
+			return savedArticle.getNumber();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			JdbcUtil.rollback(conn);
+			throw new RuntimeException(e);
 		} catch (RuntimeException e) {
 			JdbcUtil.rollback(conn);
+			throw e;
+		} finally {
+			JdbcUtil.close(conn);
 		}
-		
 	}
 
 	private Article toArticle(WriteRequest req) {
