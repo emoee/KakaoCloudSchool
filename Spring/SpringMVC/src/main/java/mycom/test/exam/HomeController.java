@@ -1,4 +1,4 @@
-package org.zerock.controller;
+package mycom.test.exam;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	// serivce --> DAO : model
 	// view 한테 model 전달.
-	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
