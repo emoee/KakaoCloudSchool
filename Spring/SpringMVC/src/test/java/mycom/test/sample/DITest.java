@@ -1,5 +1,11 @@
 package mycom.test.sample;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Date;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +25,26 @@ public class DITest {
 	
 	@Test
 	public void testExist() {
-		log.info("----------------------");
+		log.info("***TEST***");
+		
+		assertNotNull(restaurant);
 		log.info(restaurant);
+		log.info(restaurant.getChef());
 	}
-
+	
+	@Test
+	public void sampleTest() {
+		log.info("***TEST2***");
+	}
+	
+	@Before
+	public void beforeTest() {
+		log.info("작성자 : @@@");
+	}
+	
+	@After
+	public void afterTest() {
+		Date d = new Date();
+		log.info(d + ": 테스트 완료");
+	}
 }
