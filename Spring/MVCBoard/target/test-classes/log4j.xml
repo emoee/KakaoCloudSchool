@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="study.test.board">
+	<logger name="org.zerock.controller">
 		<level value="info" />
 	</logger>
 	
