@@ -18,7 +18,7 @@ function Counter(props) {
   const style = {
     background: 'pink',
     color: '#585858',
-    height: '500px'
+    height: '250px'
   }
 
   return (
