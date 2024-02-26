@@ -1,0 +1,156 @@
+# VMware ***Hypervisor***
+
+물리 자원을 추상화하여 추상화 된 자원을 만들어주는 도구이자, 추상화 된 자원들을 결합하여 가상화된 서버, PC를 만드는 도구 : 하이퍼바이저
+
+Type 1: Bare Metal : 하이퍼바이저가 물리자원 위에 직접 설치됨 (KVM, VMware ESXi, Hyper-v, AWS, GCP 등 클라우드는 자체적으로 하이퍼 바이저 이용 
+
+Type 2: Host Based(Hostd) : 원도우와 같은 HostOS가 설치된 환경 위에 하이퍼바이저를 설치하여 운영한다. Type2 하이퍼바이저는 OS입장에서 APP. 으로 동작한다 ⇒ VMware ws, Virtual Box (by oracle)
+
+### 가상 머신의 장점
+
+지역 간 이동 가능, 무중단 서비스, 자원 사용의 효율성
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/57f51903-6b15-4d91-97fa-aa24b7fc28c5/a5f3115f-4c5d-4df0-86d2-cbb6ca66a2b4/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/57f51903-6b15-4d91-97fa-aa24b7fc28c5/4b12ee26-2186-4db4-ae29-79b5b50631b5/Untitled.png)
+
+DHCP(Dynamic Host Configuration Protocol)는 **해당 IP(인터넷 프로토콜) 주소와 기타 관련 구성 정보(예: 서브넷 마스크 및 기본 게이트웨이)를 IP 호스트에 자동으로 제공하는 클라이언트/서버 프로토콜**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/57f51903-6b15-4d91-97fa-aa24b7fc28c5/c201a453-ec52-4a58-96a2-f4b450dc3d24/Untitled.png)
+
+### TCP 3 Way Handshake
+
+```
+TCP 3 Way Handshake: TCP/IP 프로토콜을 이용해서 통신을 할 때 데이터를 전송하기 전 정확한 전송을 보장하기 위해 상대방 컴퓨터와 세션을 수립하는 과정.  송신측과 수신측에 총 3개의 패킷이 생성.
+상대방과 통신을 원한다는 의미로 송신측에서 SYN(Synchoronize, 싱크)의 Flag를 on으로 설정하고, 세그먼트(TCP 패킷)에 일련번호를 붙여 상대방에게 보낸다. 이것이 첫번째 과정이다.
+세그먼트를 받은 수신측 호스트는 송신측 호스트가 보낸 패킷을 잘 받았다는 의미로 응답 메세지를 생성한다. ACK(Acknowledgement, 에크)의 Flag를 on으로 설정하고 다음에 받을 것으로 기대되는 일련번호를 붙여 보낸다. 보통 SYN 일련번호에 1을 더해 ACK 일련번호로 설정하여 보낸다. 응답과 함께 수신측에서 송신측으로 보낼 정보 역시 발송하므로 SYN의 Flag는 on으로, 자신의 Sequence Number는 어디서부터 시작한다는 일련번호를 붙여 패킷을 전송한다. SYN/ACK 패킷을 전송함으로써 양방향 세션이 수립함을 의미한다. 이것이 두번째 과정이다.
+마지막으로 송신측은 수신측의 SYN 패킷을 받고 그에 대한 응답으로 ACK 패킷을 보내게 된다. 그리고 이 때부터 데이터의 전송이 이루어진다. 이것이 마지막 세번째 과정이다.
+ 
+이렇게 세 패킷이 생성되고 주고 받는 과정을 통해 TCP가 신뢰성을 가지게 되는 것이다.
+```
+
+### VMware workstation
+
+NIC을 추상화할 때 사용하는 타임
+
+- Bridge
+- NAT(⭐) : IP 변경
+- Host-only
+    
+    ![그림1.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/57f51903-6b15-4d91-97fa-aa24b7fc28c5/b225c3b1-8949-4803-ae49-99b6a273f8bb/%EA%B7%B8%EB%A6%BC1.png)
+    
+    https://lh7-us.googleusercontent.com/iZ-mDS7M1UzlBaF7GtHwfs6Yh6wAKsgmlZQfG2AnkN1kLWBugOa7bfgmyyzWNtNQ7Uqj6jkulYE96paSxBuFYEmVBEsB90nIfmHd0LOzRAMXo8tte8h9P4gPOM5tiDBUVBxDV1NviZnSq_eoBOHSeso
+    
+    ### Storage
+    
+    - file storage : Tree
+    - block storage : 주차장 (카 리프트) : 메타데이터를 통해 원본 데이터를 찾을 수 있다. 검색 속도가 file  storage보다 빠름.
+    - object storage: key:value 형태로 저장
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/57f51903-6b15-4d91-97fa-aa24b7fc28c5/a66a505c-28ce-4b01-a8b7-9ffdb878ab97/Untitled.png)
+    
+    ### 리눅스의 시작
+    
+    - Unix : 대용량 수퍼 컴퓨터에 탑재되는 기업용 OS , 가상화 진골 / 멀티태스킹, 멀티유저
+    - 핀란드 개발자 리누스 토발쯔 가 Unix 를 따라서 Linux 커널을 개발
+        
+        엄밀한 의미에서의 리눅스 : 커널
+        
+        일반적인 의미에서의리눅스 : 배포판 리눅스 (CentOS[RedHat], Ubuntu[Debian])
+        
+    
+    root : 리눅스 시스템에서 모든 권한을 갖는 수퍼 유저 , 최고 관리자
+    
+    일반사용자 : 자신만의 홈 디렉토리에서는 모든 권한을 갖지만 다른 사용자의 홈 디렉토리나 시스템 관리를 위한 디렉토리에서는 권한이 매우 제한적이다. (user1)
+
+# Linux
+
+[명령어 모음](https://www.notion.so/0477a0c7bf274994976b61deb925280c?pvs=21)
+
+### 리눅스의 파일 시스템 구조 ( Tree )
+
+root => 슈퍼 유저인 root 의 홈 디렉토리
+
+home => 일반 사용자들의 홈 디렉토리
+
+usr => 실행 파일들이 존재한다.
+
+etc => 애플리케이션을 설치하면 이를 구성하기 위한 환경 구성 파일들이 존재한다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/57f51903-6b15-4d91-97fa-aa24b7fc28c5/73b9540a-f19d-4cf6-bded-e32733603a38/Untitled.png)
+
+> [root@centos1 ~]# whoami
+root
+[root@centos1 ~]# pwd
+/root
+[root@centos1 ~]# cd /
+[root@centos1 /]# ls
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+[root@centos1 /]# cd /home
+[root@centos1 home]# ls
+user1
+[root@centos1 home]# cd /
+[root@centos1 /]#
+> 
+
+### 경로 지정 및 이동
+
+절대 경로: root 부터 시작 ( ex. /etc/sysconfig )
+
+상대 경로: 디렉토리 명을 바로 작성,  . 또는 .. 을 이용할 수 있다.  만약  root 에 위치한 상태에서 etc 라고 입력하면 현재 위치 아래에 etc 디렉토리가 있어야 한다.
+
+### Apache 설치 및 실행
+
+[root@centos1 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor pres>
+Active: inactive (dead)
+Docs: man:httpd.service(8)
+[root@centos1 ~]#
+[root@centos1 ~]# systemctl start httpd
+[root@centos1 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor pres>
+Active: active (running) since Mon 2024-02-26 14:34:32 KST; 17s ago
+Docs: man:httpd.service(8)
+Main PID: 38583 (httpd)
+Status: "Running, listening on: port 80"
+Tasks: 213 (limit: 22873)
+Memory: 26.6M
+CGroup: /system.slice/httpd.service
+├─38583 /usr/sbin/httpd -DFOREGROUND
+├─38592 /usr/sbin/httpd -DFOREGROUND
+├─38593 /usr/sbin/httpd -DFOREGROUND
+├─38594 /usr/sbin/httpd -DFOREGROUND
+└─38595 /usr/sbin/httpd -DFOREGROUND
+
+Feb 26 14:34:32 centos1 systemd[1]: Starting The Apache HTTP Server...
+Feb 26 14:34:32 centos1 httpd[38583]: AH00558: httpd: Could not reliably determ>
+Feb 26 14:34:32 centos1 systemd[1]: Started The Apache HTTP Server.
+Feb 26 14:34:33 centos1 httpd[38583]: Server configured, listening on: port 80
+lines 1-19/19 (END)
+
+[root@centos1 etc]# sed -i 's/Listen 80/Listen 8001/' /etc/httpd/conf/httpd.conf
+
+/etc/httpd/…httpd.conf 파일의 내용 중 “Listen 80” 라는 문자열을 Listen 8001 로 변경해라. 단, 위에서 아래로 검색해 가면서 만나게 되는 첫 번째 Listen 80 만 변경한다.
+
+만약 s/Listen 80/Listen 8001/g 라고 입력하면 globally 하게 모두다 변경해라!!!
+
+https://lh7-us.googleusercontent.com/QoOCCIZBo-JCqybZ56X-Ve9zYCjsie6h3ZRLfV9BZPscaA60BC-oICffbuo2Vda5_fCGGG-RVA8fIC4II4AzlubcY_09_kSKtUZE7YcQQkL9en2tUwqcOPUF9d2bQWHHN3NDFNrdkWwIPYxyfChbCp4
+
+### 리눅스가 자체적으로 제공하는 보안 기능
+
+방화벽 ( firewalld )
+
+‘systemctl stop firewalld’ 로 임시 중지 가능.
+
+‘systemctl disable firewalld’ 로 영구 중지 가능.
+
+SELinux
+
+‘setenforce 0’ 을 이용하여 임시로 중지 가능.
+
+[root@centos1 etc]# setenforce 0
+
+/etc/selinux/config 파일에 있는 SELINUX=enforcing 을 SELINUX=disabled 로  변경후 재 부팅
